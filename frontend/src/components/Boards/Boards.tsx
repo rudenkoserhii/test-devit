@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Divider, Row } from 'antd';
 import Responses from 'components/Responses/Responses';
 import { useResponses } from 'hooks';
-import { responsesValue } from 'redux/responses/selectors';
+import { responsesValue } from '../../redux/responses/selectors';
 
 const Boards = (): JSX.Element => {
   const responses = useSelector(responsesValue);

@@ -11,9 +11,7 @@ type PropsResponses = {
 const Responses = ({
   responses,
   isLoading,
-}: PropsResponses): JSX.Element => {
-
-  return (
+}: PropsResponses): JSX.Element =>  (
     <Col className="responses">
       <Card className="full-width-height">
         <div>
@@ -36,6 +34,5 @@ const Responses = ({
       </Card>
     </Col>
   );
-};
 
 export default Responses;
