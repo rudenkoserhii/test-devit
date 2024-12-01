@@ -4,7 +4,7 @@ import { Form, Input as AntInput, Button } from 'antd';
 import { SnippetsOutlined } from '@ant-design/icons';
 import { ValidateStatus } from 'antd/es/form/FormItem';
 import { AppDispatch } from 'redux/store';
-import { getResponses } from '../../redux/responses/slice';
+import { setQty } from '../../redux/qty/slice';
 
 const Input = (): JSX.Element => {
   const dispatch: AppDispatch = useDispatch();
@@ -13,29 +13,29 @@ const Input = (): JSX.Element => {
   const [validateStatus, setValidateStatus] = useState<ValidateStatus>('');
 
   const onFinish = (values: { index: number }): void => {
-    // dispatch(getResponses(values.index));
+    dispatch(setQty(values.index));
 
     form.resetFields();
     setIsValid(undefined);
     setValidateStatus('');
   };
 
-  const validateRepoUrl = async (_: unknown, value: string): Promise<void> => {
-    if (value === '') {
+  const validateIndex = async (_: unknown, value: number): Promise<void> => {
+    if (!value) {
       setIsValid(undefined);
       setValidateStatus('');
 
       return;
     }
-    const pattern = ''
-    // if (!pattern.test(value)) {
-    //   setIsValid(false);
-    //   setValidateStatus('error');
+    
+    if (!isNaN(value)) {
+      setIsValid(false);
+      setValidateStatus('error');
 
-    //   return Promise.reject(
-    //     'Please enter a valid repo URL, for example: "https://github.com/facebook/react"'
-    //   );
-    // }
+      return Promise.reject(
+        'Please enter a valid index'
+      );
+    }
     setIsValid(true);
     setValidateStatus('success');
 
@@ -64,13 +64,9 @@ const Input = (): JSX.Element => {
         <Form.Item
           className="input-one"
           hasFeedback
-          name={'url'}
+          name={'index'}
           validateStatus={validateStatus}
-          rules={[
-            {
-              validator: validateRepoUrl,
-            },
-          ]}
+          rules={[{ validator: validateIndex }]}
         >
           <AntInput
             className="input-one__input"

@@ -1,8 +1,13 @@
-import { ResponseType } from 'types';
+import { ResponseType, QtyType } from 'types';
 
-type ActionType = {
+type ActionTypeResponse = {
   payload: ResponseType[];
   type: string;
 };
 
-export { type ActionType };
+type ActionTypeQty = {
+  payload: QtyType;
+  type: string;
+};
+
+export { type ActionTypeResponse, type ActionTypeQty };

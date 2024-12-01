@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ActionType, ResponseType } from 'types';
+import { ActionTypeResponse, ResponseType } from 'types';
 
 const initialState: { value: ResponseType[] } = {
   value: [],
@@ -9,7 +9,7 @@ export const responsesSlice = createSlice({
   name: 'responses',
   initialState: initialState,
   reducers: {
-    getResponses(state, action: ActionType) {
+    getResponses(state, action: ActionTypeResponse) {
       state.value = [...state.value, ...action.payload];
     },
   },
