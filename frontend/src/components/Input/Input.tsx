@@ -13,7 +13,7 @@ const Input = (): JSX.Element => {
   const [validateStatus, setValidateStatus] = useState<ValidateStatus>('');
 
   const onFinish = (values: { index: number }): void => {
-    dispatch(getResponses(values.index));
+    // dispatch(getResponses(values.index));
 
     form.resetFields();
     setIsValid(undefined);
@@ -27,14 +27,15 @@ const Input = (): JSX.Element => {
 
       return;
     }
-    if (!pattern.test(value)) {
-      setIsValid(false);
-      setValidateStatus('error');
+    const pattern = ''
+    // if (!pattern.test(value)) {
+    //   setIsValid(false);
+    //   setValidateStatus('error');
 
-      return Promise.reject(
-        'Please enter a valid repo URL, for example: "https://github.com/facebook/react"'
-      );
-    }
+    //   return Promise.reject(
+    //     'Please enter a valid repo URL, for example: "https://github.com/facebook/react"'
+    //   );
+    // }
     setIsValid(true);
     setValidateStatus('success');
 

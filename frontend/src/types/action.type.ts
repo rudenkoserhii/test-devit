@@ -1,19 +1,8 @@
-import { IssueType } from 'types';
+import { ResponseType } from 'types';
 
 type ActionType = {
-  payload: IssueType[];
+  payload: ResponseType[];
   type: string;
 };
 
-type ActionChangesType = {
-  payload: {
-    repo: string;
-    id: string;
-    columnIn: string;
-    columnOut: string;
-    issue: IssueType;
-  };
-  type: string;
-};
-
-export { type ActionType, type ActionChangesType };
+export { type ActionType };

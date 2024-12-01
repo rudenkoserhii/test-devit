@@ -10,7 +10,7 @@ export const responsesSlice = createSlice({
   initialState: initialState,
   reducers: {
     getResponses(state, action: ActionType) {
-      state.value = action.payload;
+      state.value = [...state.value, ...action.payload];
     },
   },
 });

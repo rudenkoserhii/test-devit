@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Divider, Row } from 'antd';
-import Column from 'components/Column/Column';
+import Responses from 'components/Responses/Responses';
 import { useResponses } from 'hooks';
-import { getColumnProps } from 'helpers';
 import { responsesValue } from 'redux/responses/selectors';
 
 const Boards = (): JSX.Element => {
@@ -18,25 +17,11 @@ const Boards = (): JSX.Element => {
 
   return (
     <div>
-      <Divider orientation="right">Issues</Divider>
+      <Divider orientation="right">Responses</Divider>
       <Row className="boards__row">
-        <Column
+        <Responses
+          responses={responses}
           isLoading={isLoading}
-          {...getColumnProps(
-            columnTitle,
-            nextPageToDo,
-            toDoIssues,
-            backgroundToDo,
-            isLoadingToDo,
-            nextPageInProgress,
-            inProgressIssues,
-            backgroundInProgress,
-            isLoadingInProgress,
-            nextPageDone,
-            doneIssues,
-            backgroundDone,
-            isLoadingDone
-          )}
         />
       </Row>
     </div>
