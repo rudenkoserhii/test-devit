@@ -14,8 +14,9 @@ import { getInProgressIssues, nextPageInProgressIssues } from '../redux/inProgre
 import { repoValue } from '../redux/repo/selectors';
 import { toDoIssuesValue } from '../redux/toDoIssues/selectors';
 import { getToDoIssues, nextPageToDoIssues } from '../redux/toDoIssues/slice';
+import { API_ROUTES } from 'enums';
 
-export const useResponses = (index: number) => {
+export const useResponses = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [, setResponsesState] = useState<ResponseType[]>([]);
@@ -26,20 +27,17 @@ export const useResponses = (index: number) => {
 
   let issues = selectIssues();
 
-
-
+  const fetchData = async (index: number) => {
     try {
-      const response = await axios.get(BASE_URL, {
-        params: setParams(),
-      })
-      if (issues) setIssuesState(issues);
+      const response = await axios.post(BASE_URL.concat(API_ROUTES.API), { index })
+      if (issues) setResponsesState(issues);
     } catch (error) {
       app.message.warning((error as AxiosError).message);
     } finally {
       setIsLoading(false);
     }
   };
-
+  
   return {
     fetchData,
     isLoading,
