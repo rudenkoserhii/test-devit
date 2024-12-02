@@ -1,5 +1,4 @@
 import { Card, Col, Spin } from 'antd';
-import { nanoid } from 'nanoid';
 import Response from 'components/Response/Response';
 import { ResponseType } from 'types';
 import { memo } from 'react';
@@ -11,10 +10,12 @@ type PropsResponses = {
 
 const NEXT_ELEMENT = 1;
 
+const MemoResponse = memo(Response);
+
 const Responses = ({
   responses,
   isLoading,
-}: PropsResponses): JSX.Element =>  (
+}: PropsResponses): JSX.Element => (
     <Col className="responses">
       <Card className="full-width-height">
         <div>
@@ -22,7 +23,7 @@ const Responses = ({
             {responses?.length &&
               [...responses]
                 .map((response, index) => (
-                  <Response key={nanoid()} response={response} responseIndex={index + NEXT_ELEMENT} />
+                  <MemoResponse key={index} response={response} responseIndex={index + NEXT_ELEMENT} />
                 ))}
           </ul>
         </div>
@@ -38,4 +39,4 @@ const Responses = ({
     </Col>
   );
 
-export default memo(Responses);
+export default Responses;

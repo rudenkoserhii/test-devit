@@ -12,7 +12,7 @@ import { qtyValue } from '../redux/qty/selectors';
 import { QtyType } from 'types';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-const REQUESTS_QTY = 100;
+const REQUESTS_QTY = 1000;
 const MIN_CONCURENCY = 1;
 const MAX_CONCURENCY = 100;
 const NEXT_ELEMENT = 1;
@@ -27,10 +27,11 @@ export const useResponses = () => {
     if (BASE_URL && qty && qty >= MIN_CONCURENCY && qty <= MAX_CONCURENCY)
       try {
         const http = rateLimit(axios.create(), { maxRequests: qty, maxRPS: qty })
+        
         setIsLoading(true);
         const promises = Array.from({ length: REQUESTS_QTY }, (_, i) => i + NEXT_ELEMENT).map(async (index) => {
           let time = new Date().getTime();
-          const response = await axios.post(BASE_URL.concat(API_ROUTES.API), { index })
+          const response = await http.post(BASE_URL.concat(API_ROUTES.API), { index })
 
           if (response?.data) dispatch(getResponses({...response.data, time: new Date().getTime() - time}));
         })

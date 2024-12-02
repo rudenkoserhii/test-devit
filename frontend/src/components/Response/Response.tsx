@@ -1,14 +1,18 @@
 import { Card, Typography } from 'antd';
-import { useEffect, useRef, memo } from 'react';
+import { useEffect, useRef } from 'react';
 import { ResponseType } from 'types';
 
 const { Text } = Typography;
+
+const TIMEOUT = 100;
 
 const Response = ({ response, responseIndex }: { response: ResponseType, responseIndex: number }): JSX.Element => {
   const myRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    myRef.current?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      myRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, TIMEOUT);
   }, [response]);
 
   const { index, time } = response;
@@ -22,4 +26,4 @@ const Response = ({ response, responseIndex }: { response: ResponseType, respons
   );
 };
 
-export default memo(Response);
+export default Response;
