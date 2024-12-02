@@ -8,7 +8,7 @@ import { API_ROUTES } from 'enums';
 import { qtyValue } from '../redux/qty/selectors';
 console.log(process)
 
-const { env } = process;
+const { env } = require('process');
 const BASE_URL = env?.REACT_APP_BASE_URL;
 
 export const useResponses = () => {
