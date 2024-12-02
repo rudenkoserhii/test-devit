@@ -4,7 +4,7 @@ import { ResponseType } from 'types';
 
 const { Text } = Typography;
 
-const Response = memo(({ response, responseIndex }: { response: ResponseType, responseIndex: number }): JSX.Element => {
+const Response = ({ response, responseIndex }: { response: ResponseType, responseIndex: number }): JSX.Element => {
   const myRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,6 +20,6 @@ const Response = memo(({ response, responseIndex }: { response: ResponseType, re
       </Text>
     </Card>
   );
-});
+};
 
-export default Response;
+export default memo(Response);
