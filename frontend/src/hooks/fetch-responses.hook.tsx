@@ -4,6 +4,7 @@ import { App } from 'antd';
 import { useAppProps } from 'antd/es/app/context';
 import axios, { AxiosError } from 'axios';
 import rateLimit from 'axios-rate-limit';
+import pLimit from 'p-limit';
 
 import { AppDispatch } from 'redux/store';
 import { getResponses } from '../redux/responses/slice';
@@ -26,15 +27,16 @@ export const useResponses = () => {
   const fetchResponses = async (): Promise<void> => {
     if (BASE_URL && qty && qty >= MIN_CONCURENCY && qty <= MAX_CONCURENCY)
       try {
-        const http = rateLimit(axios.create(), { maxRequests: qty, maxRPS: qty })
-        
+        const http = rateLimit(axios.create(), { maxRequests: Number(qty), maxRPS: Number(qty) })
+        const limit = pLimit(Number(qty));
         setIsLoading(true);
-        const promises = Array.from({ length: REQUESTS_QTY }, (_, i) => i + NEXT_ELEMENT).map(async (index) => {
+        const promises = Array.from({ length: REQUESTS_QTY }, (_, i) => i + NEXT_ELEMENT).map((index) => 
+          limit(async () => {
           let time = new Date().getTime();
           const response = await http.post(BASE_URL.concat(API_ROUTES.API), { index })
 
           if (response?.data) dispatch(getResponses({...response.data, time: new Date().getTime() - time}));
-        })
+        }))
         await Promise.all(promises);
 
       } catch (error) {

@@ -1,8 +1,8 @@
 const RateLimit = require('koa2-ratelimit').RateLimit;
 const { ERRORS } = require('../enums');
 
-const MAX_REQUESTS = 0;
-const DURATION = 100;
+const MAX_REQUESTS = 50;
+const DURATION = 1000;
 
 const limiter = RateLimit.middleware({
   interval: DURATION,
