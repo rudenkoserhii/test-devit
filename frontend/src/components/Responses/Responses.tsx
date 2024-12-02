@@ -8,6 +8,8 @@ type PropsResponses = {
   isLoading?: boolean;
 };
 
+const NEXT_ELEMENT = 1;
+
 const Responses = ({
   responses,
   isLoading,
@@ -18,8 +20,8 @@ const Responses = ({
           <ul className='ant-list'>
             {responses?.length &&
               [...responses]
-                .map((response) => (
-                  <Response key={nanoid()} response={response} />
+                .map((response, index) => (
+                  <Response key={nanoid()} response={response} responseIndex={index + NEXT_ELEMENT} />
                 ))}
           </ul>
         </div>

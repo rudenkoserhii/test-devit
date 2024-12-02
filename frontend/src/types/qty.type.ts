@@ -1,3 +1,3 @@
-type QtyType = number;
+type QtyType = number | null;
 
 export { type QtyType };

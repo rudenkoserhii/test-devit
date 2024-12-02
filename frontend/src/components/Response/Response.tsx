@@ -3,13 +3,13 @@ import { ResponseType } from 'types';
 
 const { Text } = Typography;
 
-const Response = ({ response }: { response: ResponseType }): JSX.Element => {
-  const { index } = response;
+const Response = ({ response, responseIndex }: { response: ResponseType, responseIndex: number }): JSX.Element => {
+  const { index, time } = response;
   return (
-    <Card id={index.toString()} className="response">
-      <Card.Meta title={index} description={index} />
+    <Card id={responseIndex.toString()} className="response">
+      <Card.Meta title={`Response with index ${responseIndex} on Request with index ${index}`} />
       <Text>
-        {index}
+       Operation time: {time} ms
       </Text>
     </Card>
   );

@@ -4,26 +4,31 @@ import { Divider, Row } from 'antd';
 import Responses from 'components/Responses/Responses';
 import { useResponses } from 'hooks';
 import { responsesValue } from '../../redux/responses/selectors';
+import { qtyValue } from '../../redux/qty/selectors';
+import { QtyType, ResponseType } from 'types';
 
 const Boards = (): JSX.Element => {
-  const responses = useSelector(responsesValue);
-
+  const responses: ResponseType[] = useSelector(responsesValue);
+  const qty: QtyType = useSelector(qtyValue);
+  
   const { isLoading, fetchResponses } = useResponses();
 
   useEffect(() => {
-    if (!responses) return;
+    if (!responses || !qty) return;
     fetchResponses();
-  }, [responses]);
+  }, [qty]);
 
   return (
     <div>
       <Divider orientation="right">Responses</Divider>
-      <Row className="boards__row">
-        <Responses
-          responses={responses}
-          isLoading={isLoading}
-        />
-      </Row>
+        {responses?.length &&
+          <Row className="boards__row">
+              <Responses
+                responses={responses}
+                isLoading={isLoading}
+              />
+          </Row>
+        }
     </div>
   );
 };

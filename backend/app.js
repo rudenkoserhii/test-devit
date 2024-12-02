@@ -3,6 +3,7 @@ const bodyParser = require('koa-bodyparser');
 const json = require('koa-json');
 const logger = require('koa-logger');
 const { koaSwagger } = require('koa2-swagger-ui');
+const cors = require('@koa/cors');
 
 const spec = require('./spec/swagger');
 const { apiRouter } = require('./routes');
@@ -12,6 +13,7 @@ const { STATUSES, ERRORS } = require('./enums');
 
 const app = new Koa();
 
+app.use(cors());
 app.use(
   bodyParser({
     onerror: (err, ctx) => {

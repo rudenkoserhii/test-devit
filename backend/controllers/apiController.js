@@ -26,7 +26,7 @@ const apiController = {
         ctx.body = { message: MESSAGES.NO_VALID_INDEX };
         return;
       }
-
+      console.log(`result ${result}`, result);
       ctx.status = STATUSES.CREATED;
       ctx.body = { index: result };
     } catch (error) {

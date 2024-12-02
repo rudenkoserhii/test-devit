@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { ActionTypeQty, QtyType } from 'types';
 
 const initialState: { value: QtyType } = {
-  value: 0,
+  value: null,
 };
 
 export const qtySlice = createSlice({

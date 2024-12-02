@@ -1,7 +1,7 @@
 import { ResponseType, QtyType } from 'types';
 
 type ActionTypeResponse = {
-  payload: ResponseType[];
+  payload: ResponseType;
   type: string;
 };
 
