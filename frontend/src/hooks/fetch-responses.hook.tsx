@@ -12,7 +12,7 @@ import { qtyValue } from '../redux/qty/selectors';
 import { QtyType } from 'types';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-const REQUESTS_QTY = 1000;
+const REQUESTS_QTY = 100;
 const MIN_CONCURENCY = 1;
 const MAX_CONCURENCY = 100;
 const NEXT_ELEMENT = 1;

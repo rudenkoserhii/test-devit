@@ -2,6 +2,7 @@ import { Card, Col, Spin } from 'antd';
 import { nanoid } from 'nanoid';
 import Response from 'components/Response/Response';
 import { ResponseType } from 'types';
+import { memo } from 'react';
 
 type PropsResponses = {
   responses?: ResponseType[];
@@ -37,4 +38,4 @@ const Responses = ({
     </Col>
   );
 
-export default Responses;
+export default memo(Responses);

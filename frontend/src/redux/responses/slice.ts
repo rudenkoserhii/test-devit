@@ -12,7 +12,10 @@ export const responsesSlice = createSlice({
     getResponses(state, action: ActionTypeResponse) {
       state.value = [...state.value, action.payload];
     },
+    resetResponses(state) {
+      state.value = [];
+    },
   },
 });
 
-export const { getResponses } = responsesSlice.actions;
+export const { getResponses, resetResponses } = responsesSlice.actions;

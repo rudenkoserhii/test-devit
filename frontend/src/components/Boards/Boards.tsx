@@ -19,9 +19,9 @@ const Boards = (): JSX.Element => {
   }, [qty]);
 
   return (
-    <div>
-      <Divider orientation="right">Responses</Divider>
-        {responses?.length &&
+    <>
+     <Divider orientation="right">Responses</Divider>
+        {!!responses?.length &&
           <Row className="boards__row">
               <Responses
                 responses={responses}
@@ -29,7 +29,7 @@ const Boards = (): JSX.Element => {
               />
           </Row>
         }
-    </div>
+    </>
   );
 };
 

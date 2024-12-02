@@ -4,6 +4,7 @@ import { Form, Input as AntInput, Button } from 'antd';
 import { ValidateStatus } from 'antd/es/form/FormItem';
 import { AppDispatch } from 'redux/store';
 import { setQty } from '../../redux/qty/slice';
+import { resetResponses } from '../../redux/responses/slice';
 
 const EMPTY_STRING = '';
 
@@ -15,6 +16,7 @@ const Input = (): JSX.Element => {
 
   const onFinish = (values: { index: number }): void => {
     dispatch(setQty(values.index));
+    dispatch(resetResponses());
 
     form.resetFields();
     setIsValid(undefined);
