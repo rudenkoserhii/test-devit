@@ -28,7 +28,7 @@ const Input = (): JSX.Element => {
       return;
     }
     
-    if (!isNaN(value)) {
+    if (isNaN(value)) {
       setIsValid(false);
       setValidateStatus('error');
 
