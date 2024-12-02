@@ -1,62 +1,47 @@
-Project Name: Test Incode Kanban
+Project Name: Concurrency and Rate Limiting Demo
+-- Overview
+This project demonstrates how to implement concurrent requests with rate limiting in a React application. It showcases how to use axios-rate-limit to control the number of requests per second and how to handle asynchronous operations effectively.
 
-Overview
+-- Technologies Used:
+React: A JavaScript library for building user interfaces.
+axios: A promise-based HTTP client for the browser and Node.js.   
+axios-rate-limit: A middleware for rate limiting HTTP requests.
+-- How to Run:
+Clone the repository:
+Bash
+``git clone https://github.com/rudenkoserhii/test-devit.git``
+Use code with caution.
 
-This project is a GitHub Kanban Board, allowing users to view and manage issues from a GitHub repository in a Kanban-style board. Users can load issues by entering a GitHub repository URL, and the app organizes issues into three columns: ToDo, In Progress, and Done. The application supports drag-and-drop functionality for changing the order of issues within columns. The app also stores the current issue position between sessions and allows users to visit the profile of the repo owner and the repo itself.
+Install dependencies:
+Bash
+``cd your-repo-name``
+``npm install``   ``
 
-Technologies Used:
+Use code with caution.
 
-- React 18 with Hooks
-- TypeScript
-- UI Library: Ant Design
-- State Manager: Redux
-- Testing Libraries: Cypress
+Start the development server:
+Bash
+``npm start``
+Use code with caution.
 
-Project Structure:
+-- Usage:
+Enter the desired concurrency limit in the input field.
+Click the "Start" button to initiate the requests.
+The application will send concurrent requests to the server, respecting the rate limit.
+The received responses will be displayed in a list.
+-- Key Features:
+--- Concurrent Requests: Multiple requests are sent simultaneously, improving performance.
+--- Rate Limiting: The axios-rate-limit middleware ensures that the specified number of requests are not exceeded per second.
+--- Asynchronous Handling: Asynchronous operations are handled using Promise.all to efficiently process multiple requests.
+--- User Interface: A simple UI is provided to input the concurrency limit and display the results.
+-- Future Improvements:
+--- Error Handling: Implement robust error handling to handle network errors, server errors, and other exceptions.
+--- User Experience: Enhance the user interface with progress indicators, feedback messages, and error handling.
+--- Testing: Write unit and integration tests to ensure code quality and reliability.
+--- Optimization: Explore techniques like caching and lazy loading to improve performance for large-scale applications.
+-- Note:
 
-The project follows a modular structure to enhance readability and maintainability:
-
-src/: Contains the source code of the React application.
-cypress/: Includes Cypress integration tests.
-redux/: Contains Redux store configuration and slices.
-
-Scripts:
-start: Runs the development server.
-build: Builds the production-ready application.
-eject: Ejects the project configuration from react-scripts.
-lint: Lints the project files using ESLint.
-lint:fix: Automatically fixes ESLint errors.
-prettier: Formats the code using Prettier.
-cypress:open: Opens the Cypress testing interface.
-
-Development Setup:
-
-- Clone the repository: git clone <repo-url>
-- Install dependencies: npm install
-- Start the development server: npm start
-
-Testing:
-Unit tests are written and Integration tests are performed using Cypress.
-
-How to Use:
-
-- Enter the GitHub repository URL in the input field.
-- Press the "Load" button to fetch issues from the repository.
-- View and manage issues in the Kanban-style board.
-- Drag-n-drop issues between columns to change their order.
-- Stored issue positions persist between sessions.
-- Visit the profile of the repo owner and the repo itself through provided links.
-
-Project Assessment:
-The project will be assessed based on the following criteria:
-
-Workability: How well the application functions.
-Project Structure: Organization of files and directories.
-Code Quality: Clean and readable code, adherence to ESLint and Prettier standards.
-React Knowledge: Effective use of React and its ecosystem.
-Testing: Implementation of unit and integration tests.
-
-Repository Link
-[Link to Repository](https://github.com/rudenkoserhii/test-incode-kanban)
-
-Notes
+Adjust the maxRequests and maxRPS values in the axios-rate-limit configuration to control the rate limit.
+Consider using a more sophisticated state management solution like Redux or Zustand for larger applications.
+Explore other rate limiting techniques or libraries if needed.
+By understanding the core concepts and applying the techniques demonstrated in this project, you can effectively implement concurrent requests and rate limiting in your React applications.
