@@ -6,10 +6,8 @@ import { AppDispatch } from 'redux/store';
 import { getResponses } from '../redux/responses/slice';
 import { API_ROUTES } from 'enums';
 import { qtyValue } from '../redux/qty/selectors';
-console.log(process)
 
-const { env } = require('process');
-const BASE_URL = env?.REACT_APP_BASE_URL;
+const { env: { REACT_APP_BASE_URL: BASE_URL } } = require('process');
 
 export const useResponses = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
