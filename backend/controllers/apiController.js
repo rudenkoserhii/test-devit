@@ -9,6 +9,7 @@ const apiController = {
   async sendWithDelay(ctx) {
     try {
       const { index } = ctx.request.body;
+      
       if (!index) {
         ctx.status = STATUSES.NOT_FOUND;
         ctx.body = { message: MESSAGES.INDEX_MISSING };
